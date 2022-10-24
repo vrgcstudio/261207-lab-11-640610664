@@ -12,4 +12,16 @@ export default function roomRoute(req, res) {
   const chatrooms = readChatRoomsDB();
 
   //create room data and return response
+  const rooms = [];
+  for (const chatroom of chatrooms) {
+    rooms.push({
+      roomId: chatroom.roomId,
+      roomName: chatroom.roomName,
+    });
+  }
+
+  return res.json({
+    ok: true,
+    rooms,
+  });
 }
